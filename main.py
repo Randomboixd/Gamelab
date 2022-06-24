@@ -1,7 +1,7 @@
 import os # Importing os for OS Related Features
 import json # Importing JSON for data storing.
 import time
-
+from guessthenumber import *
 
 def get(data): # Declare function to get game data
     with open('gamedata.json', 'r') as file:
@@ -19,19 +19,6 @@ def clear(): # Clearing is a lil harder since WINDOWS and LINUX uses diffrent sy
     if get('platform') == "LINUX":
         os.system('clear')
 
-if get('firsttime?') == "true":
-    if get('gamecoins') > 0:
-        print("CHEATER ALERT!!!!")
-        print("You tried to cheat by modifying the gamecoins in gamedata.json!")
-        print("Your Game will now be reset. We dont tolerate cheaters!")
-        cheaterdata = {
-            "user": "ASK",
-            "platform": "ASK",
-            "gamecoins": 0,
-            "firsttime?": "true"
-        }
-        wrt(cheaterdata)
-        exit(1)
 
 if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
     print("Whats your platform? (needed for: Operating system exclusive stuff)")
@@ -72,3 +59,4 @@ def Setup(): # First time set up!
 def Mainmenu():
     print(f"Welcome to gamelab @{get('user')}!")
     print(f"Your GameCredits:{get('gamecoins')}")
+
