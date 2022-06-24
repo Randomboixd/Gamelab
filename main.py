@@ -1,7 +1,10 @@
 import os # Importing os for OS Related Features
 import json # Importing JSON for data storing.
 import time
-from guessthenumber import *
+from guessthenumber import GTM
+from freecredit import FreeCredit
+from Settings import SettingsMenu
+
 
 def get(data): # Declare function to get game data
     with open('gamedata.json', 'r') as file:
@@ -55,8 +58,45 @@ def Setup(): # First time set up!
     print("Lets get started!")
     time.sleep(2)
     clear()
+    Mainmenu()
 
 def Mainmenu():
     print(f"Welcome to gamelab @{get('user')}!")
     print(f"Your GameCredits:{get('gamecoins')}")
+    print("Games: ")
+    print(" 1,Guess the number 2, Free Credits! 3,Settings")
+    gametoplay = input("Enter the number of the game you wanna play!")
+    if gametoplay == "1":
+        clear()
+        guessit = GTM(348)
+        if guessit == "WIN":
+            clear()
+            print(f"Congrats for the win! @{get('user')}!")
+            print("3 Gamecoins was added to your game account!")
+            time.sleep(6)
+            clear()
+        if guessit == "LOSE":
+            print(f"Nice try. Unfortunately that wasnt good.")
+            time.sleep(6)
+            clear()
+    if gametoplay == "2":
+        clear()
+        freecreditslool = FreeCredit(846)
+        if freecreditslool == "WIN":
+            print("You got Your Credits!")
+            time.sleep(6)
+            clear()
+        if freecreditslool == "LOSE":
+            print("The funny thing is: You cant lose. so im writing this as a useless thing")
+            # yes im stupid
+    if gametoplay == "3":
+        clear()
+        SettingsMenu()
+        
+    clear()
+    Mainmenu()
 
+if get('firsttime?') == "true":
+    Setup()
+else:
+    Mainmenu()
