@@ -25,7 +25,8 @@ def FreeCredit(Launchcode):
             "user": get('user'),
             "platform": get('platform'),
             "gamecoins": reward,
-            "firsttime?": get('firsttime?')
+            "firsttime?": get('firsttime?'),
+            "completedpyquiz": "false"
         }
         wrt(windata)
         return "WIN"

@@ -22,7 +22,8 @@ def Delete():
             "user": "ASK",
             "platform": "ASK",
             "gamecoins": 0,
-            "firsttime?": "true"
+            "firsttime?": "true",
+            "completedpyquiz": "false"
         })
         print("Done!")
         return "DELETED"

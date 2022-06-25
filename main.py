@@ -1,9 +1,11 @@
 import os # Importing os for OS Related Features
 import json # Importing JSON for data storing.
-import time
+import time # Good for some stuff
+# Import Game Classes.
 from guessthenumber import GTM
 from freecredit import FreeCredit
 from Settings import SettingsMenu
+from pythonquiz import quiz
 
 
 def get(data): # Declare function to get game data
@@ -31,14 +33,16 @@ if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
             "user": "ASK",
             "platform": "WINDOWS",
             "gamecoins": 0,
-            "firsttime?": "true"
+            "firsttime?": "true",
+            "completedpyquiz": "false"
         })
     if oprsys == "LINUX": # Same as above just for LINUX
         wrt({
             "user": "ASK",
             "platform": "LINUX",
             "gamecoins": 0,
-            "firsttime?": "true"
+            "firsttime?": "true",
+            "completedpyquiz": "false"
         })
 
 clear()
@@ -51,7 +55,8 @@ def Setup(): # First time set up!
         "user": usrname,
         "platform": get('platform'),
         "gamecoins": 0,
-        "firsttime?": "false"
+        "firsttime?": "false",
+        "completedpyquiz": "false"
     })
     time.sleep(3)
     print("Nice Im ready!")
@@ -64,7 +69,7 @@ def Mainmenu():
     print(f"Welcome to gamelab @{get('user')}!")
     print(f"Your GameCredits:{get('gamecoins')}")
     print("Games: ")
-    print(" 1,Guess the number 2, Free Credits! 3,Settings")
+    print(f" 1,Guess the number 2, Free Credits! 3, Python Quiz (Completed:{get('completedpyquiz')} ) 4,Settings")
     gametoplay = input("Enter the number of the game you wanna play!")
     if gametoplay == "1":
         clear()
@@ -72,7 +77,7 @@ def Mainmenu():
         if guessit == "WIN":
             clear()
             print(f"Congrats for the win! @{get('user')}!")
-            print("3 Gamecoins was added to your game account!")
+            print("3 GameCredits was added to your game account!")
             time.sleep(6)
             clear()
         if guessit == "LOSE":
@@ -89,9 +94,39 @@ def Mainmenu():
         if freecreditslool == "LOSE":
             print("The funny thing is: You cant lose. so im writing this as a useless thing")
             # yes im stupid
+
     if gametoplay == "3":
+        if get('completedpyquiz') == "true":
+            print("You cant do this! Because you already completed the quiz! Reset Your Account if you wanna play again")
+            time.sleep(5)
+        else:
+            clear()
+            quizzlol = quiz(69424)
+            if quizzlol == "VICTORY":
+                print("VICTORY! 30 GameCredits was added to your account!")
+                reward = get('gamecoins') + 30
+                wrt({
+                    "user": get('user'),
+                    "platform": get('platform'),
+                    "gamecoins": reward,
+                    "firsttime?": "false",
+                    "completedpyquiz": "true"
+                })
+                time.sleep(6)
+                clear()
+            if quizzlol == "LOSE":
+                print("Unfortunately You lose! You can still Retry.")
+                time.sleep(5)
+            if quizzlol == "Canceled":
+                print("No QUIZ!")
+                print("No coins were added to your account. You can still Retry.")
+                time.sleep(5)
+    if gametoplay == "4":
         clear()
-        SettingsMenu()
+        settings =  SettingsMenu()
+        if settings == "Done!":
+            print("Settings Saved!")
+            
         
     clear()
     Mainmenu()
