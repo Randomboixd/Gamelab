@@ -1,6 +1,8 @@
 import time
+# Import WRT Classes
 from rw import wrt
 from rw import get
+
 
 def question1():
     print("What type is Python? (Compiled, Interpreted)")

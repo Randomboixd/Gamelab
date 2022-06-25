@@ -1,19 +1,18 @@
 import json
 import time
-
-def get(data): # Declare function to get game data
-    with open('gamedata.json', 'r') as file:
-        Back = json.load(file)
-
-    return Back[data]
-
-def wrt(data): # Declare Function to Write game data. so you dont need to see with open('gamedata', 'w') as file: all around the code
-    with open('gamedata.json', 'w') as file:
-        json.dump(data, file, indent=4)
+# Import Read/Write Classes
+from rw import wrt
+from rw import get
+from rwshop import wrts
+from rwshop import gets
     
 def Delete():
     print("ARE YOU SURE YOU WANNA DELETE YOUR DATA?? YOU WILL LOSE:")
-    print(f"GAMECREDITS:{str(get('gamecoins'))}!")
+    if gets('item1') == "owned":
+        alsoitem1 = ", Your Double GameCredit BOOSTER"
+    else:
+        alsoitem1 = ""
+    print(f"GAMECREDITS:{str(get('gamecoins'))}{alsoitem1}!")
     choice = input('Yes or No: ')
     if choice == "Yes":
         print("Destroying data")
@@ -24,6 +23,10 @@ def Delete():
             "gamecoins": 0,
             "firsttime?": "true",
             "completedpyquiz": "false"
+        })
+        wrts({
+            "item1": "notowned",
+            "item1price": 10
         })
         print("Done!")
         return "DELETED"

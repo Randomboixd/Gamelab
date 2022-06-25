@@ -6,17 +6,15 @@ from guessthenumber import GTM
 from freecredit import FreeCredit
 from Settings import SettingsMenu
 from pythonquiz import quiz
+from Shop import Shop
+# Import WRT Classes
+from rw import wrt
+from rw import get
+from rwshop import wrts
+from rwshop import gets
 
 
-def get(data): # Declare function to get game data
-    with open('gamedata.json', 'r') as file:
-        Back = json.load(file)
 
-    return Back[data]
-
-def wrt(data): # Declare Function to Write game data. so you dont need to see with open('gamedata', 'w') as file: all around the code
-    with open('gamedata.json', 'w') as file:
-        json.dump(data, file, indent=4)
     
 def clear(): # Clearing is a lil harder since WINDOWS and LINUX uses diffrent syntax
     if get('platform') == "WINDOWS":
@@ -69,7 +67,7 @@ def Mainmenu():
     print(f"Welcome to gamelab @{get('user')}!")
     print(f"Your GameCredits:{get('gamecoins')}")
     print("Games: ")
-    print(f" 1,Guess the number 2, Free Credits! 3, Python Quiz (Completed:{get('completedpyquiz')} ) 4,Settings")
+    print(f" 1,Guess the number 2, Free Credits! 3, Python Quiz (Completed:{get('completedpyquiz')} ) 4,Settings 5, Shop")
     gametoplay = input("Enter the number of the game you wanna play!")
     if gametoplay == "1":
         clear()
@@ -105,6 +103,8 @@ def Mainmenu():
             if quizzlol == "VICTORY":
                 print("VICTORY! 30 GameCredits was added to your account!")
                 reward = get('gamecoins') + 30
+                if gets('item1') == "owned":
+                    reward = reward * 2
                 wrt({
                     "user": get('user'),
                     "platform": get('platform'),
@@ -126,6 +126,12 @@ def Mainmenu():
         settings =  SettingsMenu()
         if settings == "Done!":
             print("Settings Saved!")
+    if gametoplay == "5":
+        clear()
+        shoplol = Shop()
+        if shoplol == "purchaseditem1":
+            print("Congratulations on your Purchase for Double GameCredits!")
+            time.sleep(5)
             
         
     clear()
