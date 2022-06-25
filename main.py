@@ -34,7 +34,39 @@ if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
             "firsttime?": "true",
             "completedpyquiz": "false"
         })
+    if oprsys == "Windows": # If the user Specified WINDOWS then write that to the file!
+        wrt({
+            "user": "ASK",
+            "platform": "WINDOWS",
+            "gamecoins": 0,
+            "firsttime?": "true",
+            "completedpyquiz": "false"
+        })
+    if oprsys == "windows": # If the user Specified WINDOWS then write that to the file!
+        wrt({
+            "user": "ASK",
+            "platform": "WINDOWS",
+            "gamecoins": 0,
+            "firsttime?": "true",
+            "completedpyquiz": "false"
+        })
     if oprsys == "LINUX": # Same as above just for LINUX
+        wrt({
+            "user": "ASK",
+            "platform": "LINUX",
+            "gamecoins": 0,
+            "firsttime?": "true",
+            "completedpyquiz": "false"
+        })
+    if oprsys == "Linux": # Same as above just for LINUX
+        wrt({
+            "user": "ASK",
+            "platform": "LINUX",
+            "gamecoins": 0,
+            "firsttime?": "true",
+            "completedpyquiz": "false"
+        })
+    if oprsys == "linux": # Same as above just for LINUX
         wrt({
             "user": "ASK",
             "platform": "LINUX",
@@ -44,6 +76,7 @@ if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
         })
 
 clear()
+print("Main File Launch")
 
 def Setup(): # First time set up!
     print("Welcome to GAMELAB! I'll ask you a question and we'll be ready!")
@@ -65,10 +98,13 @@ def Setup(): # First time set up!
 
 def Mainmenu():
     print(f"Welcome to gamelab @{get('user')}!")
+    print()
     print(f"Your GameCredits:{get('gamecoins')}")
+    print()
     print("Games: ")
+    print()
     print(f" 1,Guess the number 2, Free Credits! 3, Python Quiz (Completed:{get('completedpyquiz')} ) 4,Settings 5, Shop")
-    gametoplay = input("Enter the number of the game you wanna play!")
+    gametoplay = input("Enter the number of the game you wanna play: ")
     if gametoplay == "1":
         clear()
         guessit = GTM(348)

@@ -1,3 +1,4 @@
+from operator import sub
 import time
 from rwshop import gets
 from rwshop import wrts
@@ -6,15 +7,24 @@ from rw import wrt
 
 def purchase1process():
     print("Purchasing...")
-    minusss = get('gamecoins') - gets('item1price')
+    gc = get('gamecoins')
+    pr = gets('item1price')
+    minusss = sub(gc,pr)
     wrts({
         "item1": "owned",
         "item1price": 10
     })
+    wrt({
+        "user": get('user'),
+        "platform": get('platform'),
+        "gamecoins": minusss,
+        "firsttime?": get('firsttime?'),
+        "completedpyquiz": get('completedpyquiz')
+    })
 
 def purchaseitem1():
     print(f"Are you sure you wanna purchase Double Gamecredit? PRICE:{str(gets('item1price'))}?")
-    r = input("yes or no")
+    r = input("yes or no: ")
     if r == "yes":
         purchase1process()
         time.sleep(5)
