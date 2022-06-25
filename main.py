@@ -1,3 +1,4 @@
+from operator import add # So + works
 import os # Importing os for OS Related Features
 import json # Importing JSON for data storing.
 import time # Good for some stuff
@@ -30,7 +31,7 @@ if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
         wrt({
             "user": "ASK",
             "platform": "WINDOWS",
-            "gamecoins": 0,
+            "gamecoins": 1,
             "firsttime?": "true",
             "completedpyquiz": "false"
         })
@@ -38,7 +39,7 @@ if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
         wrt({
             "user": "ASK",
             "platform": "WINDOWS",
-            "gamecoins": 0,
+            "gamecoins": 1,
             "firsttime?": "true",
             "completedpyquiz": "false"
         })
@@ -46,7 +47,7 @@ if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
         wrt({
             "user": "ASK",
             "platform": "WINDOWS",
-            "gamecoins": 0,
+            "gamecoins": 1,
             "firsttime?": "true",
             "completedpyquiz": "false"
         })
@@ -54,7 +55,7 @@ if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
         wrt({
             "user": "ASK",
             "platform": "LINUX",
-            "gamecoins": 0,
+            "gamecoins": 1,
             "firsttime?": "true",
             "completedpyquiz": "false"
         })
@@ -62,7 +63,7 @@ if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
         wrt({
             "user": "ASK",
             "platform": "LINUX",
-            "gamecoins": 0,
+            "gamecoins": 1,
             "firsttime?": "true",
             "completedpyquiz": "false"
         })
@@ -70,7 +71,7 @@ if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
         wrt({
             "user": "ASK",
             "platform": "LINUX",
-            "gamecoins": 0,
+            "gamecoins": 1,
             "firsttime?": "true",
             "completedpyquiz": "false"
         })
@@ -85,7 +86,7 @@ def Setup(): # First time set up!
     wrt({
         "user": usrname,
         "platform": get('platform'),
-        "gamecoins": 0,
+        "gamecoins": 1,
         "firsttime?": "false",
         "completedpyquiz": "false"
     })
@@ -103,7 +104,7 @@ def Mainmenu():
     print()
     print("Games: ")
     print()
-    print(f" 1,Guess the number 2, Free Credits! 3, Python Quiz (Completed:{get('completedpyquiz')} ) 4,Settings 5, Shop")
+    print(f" 1,Guess the number 2, Free Credits! 3, Python Quiz (Completed:{get('completedpyquiz')} ) 4,Settings 5, Shop 6, EXIT")
     gametoplay = input("Enter the number of the game you wanna play: ")
     if gametoplay == "1":
         clear()
@@ -111,7 +112,7 @@ def Mainmenu():
         if guessit == "WIN":
             clear()
             print(f"Congrats for the win! @{get('user')}!")
-            print("3 GameCredits was added to your game account!")
+            print("12 GameCredits was added to your game account!")
             time.sleep(6)
             clear()
         if guessit == "LOSE":
@@ -168,7 +169,10 @@ def Mainmenu():
         if shoplol == "purchaseditem1":
             print("Congratulations on your Purchase for Double GameCredits!")
             time.sleep(5)
-            
+    if gametoplay == "6":
+        print("Quitting...")
+        time.sleep(3)
+        quit(0)
         
     clear()
     Mainmenu()
