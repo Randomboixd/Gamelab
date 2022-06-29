@@ -3,12 +3,12 @@ import os # Importing os for OS Related Features
 import json # Importing JSON for data storing.
 import time # Good for some stuff
 # Import Game Classes.
-from guessthenumber import GTM
-from freecredit import FreeCredit
-from Settings import SettingsMenu
-from pythonquiz import quiz
-from Shop import Shop
-# Import WRT Classes
+from guessthenumber import GTM # Import Guess the number from guessthenumber.py
+from freecredit import FreeCredit # Import the freecredit module from freecredit file
+from Settings import SettingsMenu # Import settings menu
+from pythonquiz import quiz # Import quiz
+from Shop import Shop # import shop
+# Import Read/Write Classes
 from rw import wrt
 from rw import get
 from rwshop import wrts
@@ -98,28 +98,28 @@ def Setup(): # First time set up!
     Mainmenu()
 
 def Mainmenu():
-    print(f"Welcome to gamelab @{get('user')}!")
+    print(f"Welcome to gamelab @{get('user')}!") # Welcomes the user
     print()
-    print(f"Your GameCredits:{get('gamecoins')}")
+    print(f"Your GameCredits:{get('gamecoins')}") # Tells the user how much gamecoins he has
     print()
     print("Games: ")
     print()
     print(f" 1,Guess the number 2, Free Credits! 3, Python Quiz (Completed:{get('completedpyquiz')} ) 4,Settings 5, Shop 6, EXIT")
-    gametoplay = input("Enter the number of the game you wanna play: ")
-    if gametoplay == "1":
-        clear()
-        guessit = GTM(348)
-        if guessit == "WIN":
+    gametoplay = input("Enter the number of the game you wanna play: ") # Lets user choose a game
+    if gametoplay == "1": # If user selects GTM then
+        clear() # Clear Screen
+        guessit = GTM(348) # Launch GTM with startcode 348 (I made that up myself. its only for verifying.)
+        if guessit == "WIN": # If the code returns WIN then do these
             clear()
             print(f"Congrats for the win! @{get('user')}!")
             print("12 GameCredits was added to your game account!")
             time.sleep(6)
             clear()
-        if guessit == "LOSE":
+        if guessit == "LOSE": # else.
             print(f"Nice try. Unfortunately that wasnt good.")
             time.sleep(6)
             clear()
-    if gametoplay == "2":
+    if gametoplay == "2": # If user select Freecredits then launch freecredit()
         clear()
         freecreditslool = FreeCredit(846)
         if freecreditslool == "WIN":

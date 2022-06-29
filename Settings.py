@@ -1,9 +1,11 @@
-from DataDestroy import Delete
+from DataDestroy import Delete # Import Delete Function from DataDestroy
+# Import Read/Write Modules
 from rw import get
 from rw import wrt
+# Import Debug Menu (top secret)
 from DebugMenuLOOL import DebugMenu
 
-def SettingsMenu():
+def SettingsMenu(): # Declare function Settingsmenu for settings n stuff.
     print("Welcome to settings! Here is what you can do!")
     print("DATANUKE, QUIT, NAMECHANGE")
     selected = input("Select one: ")
@@ -27,6 +29,6 @@ def SettingsMenu():
         print("You found the DEBUG CONSOLE! This menu was made for @Randomboixd! But hey you can use it!")
         DebugMenu()
         return "DONE"
-
+    DebugMenu() # Go to the Debug Menu AGAIN!
 
 

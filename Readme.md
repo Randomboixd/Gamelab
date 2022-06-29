@@ -1,18 +1,24 @@
-# Gamelab!
+# Gamelab. A little Collection of games i wrote for the sake of fun.
 
-A simple collection of my minigames interacting with each other.
-
-
-# INSTALLATION
-
-On windows Just get the files (yes json included) and put them into the same folder.
-and run the executable.
+- Features:
+- 3 games! (and more in the future)
+- Discord Rich Presence (Coming in next update!)
+- Compiled .exes!
+- All based on basic python and json.
 
 
-On linux however i cant build it yet. but there will be a linux version Until that Follow this:
+# Made by Randomboixd
 
-- Clone this Git Repository.
+# COMPILING.
 
-- run main.py
+Question one What platform?
 
-Thats it!
+if you chose windows! it already contains the tools needed!
+just run build.py and get ready!
+
+else idk man. i never compiled for LINUX.
+
+# INSTALLING
+
+Simply download the .exe and the 2 .json files from the releases page.
+if you are on linux however. just clone the repo and run main.py
