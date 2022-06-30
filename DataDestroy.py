@@ -5,6 +5,8 @@ from rw import wrt
 from rw import get
 from rwshop import wrts
 from rwshop import gets
+from presencerw import getr
+from presencerw import rwr
     
 def Delete(launch):
     if launch == "Settings":
@@ -28,6 +30,12 @@ def Delete(launch):
             wrts({
                 "item1": "notowned",
                 "item1price": 10
+            })
+            rwr({
+                "on": "Ask",
+                "clientid": "990194726122692688",
+                "normallargeimage": "gamelabicon",
+                "gtmlargeimage": "guess"
             })
             print("Done!")
             exit(0)

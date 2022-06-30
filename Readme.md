@@ -2,7 +2,7 @@
 
 - Features:
 - 3 games! (and more in the future)
-- Discord Rich Presence (Coming in next update!)
+- Discord Rich Presence (Kinda Working but still buggy.)
 - Compiled .exes!
 - All based on basic python and json.
 
