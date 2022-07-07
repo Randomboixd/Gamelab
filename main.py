@@ -13,10 +13,14 @@ from rw import wrt
 from rw import get
 from rwshop import wrts
 from rwshop import gets
+from presencerw import getr
+from presencerw import rwr
+# Import File Generate Jsons
+from genfile import Genfiles
 
 
+Genfiles()
 
-    
 def clear(): # Clearing is a lil harder since WINDOWS and LINUX uses diffrent syntax
     if get('platform') == "WINDOWS":
         os.system('cls')
@@ -27,6 +31,7 @@ def clear(): # Clearing is a lil harder since WINDOWS and LINUX uses diffrent sy
 if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
     print("Whats your platform? (needed for: Operating system exclusive stuff)")
     oprsys = input('WINDOWS or LINUX: ')
+
     if oprsys == "WINDOWS": # If the user Specified WINDOWS then write that to the file!
         wrt({
             "user": "ASK",
@@ -77,12 +82,18 @@ if get('platform') == "ASK": # Reads from file to get os. If not defined ask.
         })
 
 clear()
-print("Main File Launch")
 
 def Setup(): # First time set up!
     print("Welcome to GAMELAB! I'll ask you a question and we'll be ready!")
     usrname = input("Whats your username (I Will call you that): ")
-    print(f"Nice name {usrname} Let me write that down and I'll be ready!")
+    print(f"Nice name {usrname}!")
+    print("Do you wanna enable rich presence?")
+    Genfiles()
+    prs = input("Yes or No: ")
+    if prs == "Yes":
+        prs = "Yes"
+    else:
+        prs = "No"
     wrt({
         "user": usrname,
         "platform": get('platform'),
@@ -90,13 +101,29 @@ def Setup(): # First time set up!
         "firsttime?": "false",
         "completedpyquiz": "false"
     })
+    rwr({
+    "on": prs,
+    "clientid": "990194726122692688",
+    "normallargeimage": "gamelabicon",
+    "gtmlargeimage": "guess"
+    })
     time.sleep(3)
     print("Nice Im ready!")
     print("Lets get started!")
     time.sleep(2)
     clear()
+    if getr('on') == "Yes":
+        from pypresence import Presence
+        RPC = Presence(getr('clientid'))
+        RPC.connect()
+        RPC.update(state="Playing Gamelab", details="Just playing gamelab.", large_image=getr('normallargeimage'))
     Mainmenu()
 
+if getr('on') == "Yes":
+    from pypresence import Presence
+    RPC = Presence(getr('clientid'))
+    RPC.connect()
+    RPC.update(state="Playing Gamelab", details="Just playing gamelab.", large_image=getr('normallargeimage'))
 def Mainmenu():
     print(f"Welcome to gamelab @{get('user')}!") # Welcomes the user
     print()
@@ -170,6 +197,12 @@ def Mainmenu():
             print("Congratulations on your Purchase for Double GameCredits!")
             time.sleep(5)
     if gametoplay == "6":
+        if getr('on') == "Yes":
+            RPC = Presence(getr('clientid'))
+            RPC.connect()
+            RPC.update(state="Quitting gamelab.")
+            time.sleep(2)
+            RPC.close()
         print("Quitting...")
         time.sleep(3)
         quit(0)
