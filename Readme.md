@@ -8,6 +8,8 @@ So there is the original Readme.md
 
 Also if you're trying this... I removed the Discord Devportal thingy as i deleted it a long time ago. So don't enable Rich Presence!
 
+Oh yeah final commit, im not going to approve any pull requests and stuff (mostly cuz idk how to use them). so yeah. just sayin
+
 
 # Gamelab. A little Collection of games i wrote for the sake of fun.
 
