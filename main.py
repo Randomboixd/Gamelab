@@ -1,3 +1,10 @@
+# Oh hey! Welcome to main.py! This is me writing this almost a year after i wrote this...
+
+# Remember this code is absolutely terrible, but does its job. Okay?
+
+
+
+
 from operator import add # So + works
 import os # Importing os for OS Related Features
 import json # Importing JSON for data storing.
@@ -103,7 +110,7 @@ def Setup(): # First time set up!
     })
     rwr({
     "on": prs,
-    "clientid": "990194726122692688",
+    "clientid": "", # 2023 change: Removed client ID as its deleted from dev portal now.
     "normallargeimage": "gamelabicon",
     "gtmlargeimage": "guess"
     })
