@@ -33,7 +33,7 @@ def Delete(launch):
             })
             rwr({
                 "on": "Ask",
-                "clientid": "990194726122692688",
+                "clientid": "0",
                 "normallargeimage": "gamelabicon",
                 "gtmlargeimage": "guess"
             })
