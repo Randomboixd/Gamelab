@@ -1,4 +1,4 @@
-import json # Imports The JSON MODULE
+import json # Imports The JSON MODULE # Woah such great documentation myself!
 
 def getr(data):
     with open('presenceconfig.json', 'r') as file:
