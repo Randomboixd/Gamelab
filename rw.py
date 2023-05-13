@@ -9,4 +9,5 @@ def get(data): # Declare function to get game data
 
 def wrt(data): # Declare Function to Write game data. so you dont need to see with open('gamedata', 'w') as file: all around the code
     with open('gamedata.json', 'w') as file:
+        data["clientid"] = "no" # 2023 Change: NO CLIENT ID!
         json.dump(data, file, indent=4)
